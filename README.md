@@ -1,28 +1,49 @@
-# Malicious URL Classification
+# 🛡️ Malicious URL Classification
 
-End-to-end machine learning project for classifying URLs as benign (0) or malicious (1). The project includes automated dataset analysis, cleaning, handcrafted feature engineering, text vectorization, class-imbalance handling, model selection, hyperparameter tuning, evaluation, model persistence, and a Streamlit inference app.
+An end-to-end **Machine Learning** project that detects whether a URL is **Benign (0)** or **Malicious (1)**. The project covers the complete machine learning lifecycle, including data preprocessing, feature engineering, model training, hyperparameter tuning, evaluation, model persistence, and deployment through an interactive **Streamlit** web application.
 
-## Project Overview
+---
 
-The pipeline loads a CSV dataset, detects the URL and label columns automatically when possible, normalizes labels to a binary target, engineers URL-level features, compares text representations, trains multiple classifiers, and saves the best performing pipeline as a reusable artifact.
+## 📌 Project Overview
 
-## Features
+Cybersecurity threats often originate from malicious URLs used in phishing, malware distribution, spam campaigns, and credential theft. This project applies Natural Language Processing (NLP) and Machine Learning techniques to automatically classify URLs before users visit them.
 
-- Automatic schema detection for URL and label columns
-- Dataset profiling and visualization
-- Cleaning and label normalization
-- Handcrafted URL features
-- CountVectorizer and TF-IDF with character and word n-grams
-- Class imbalance handling with SMOTE when needed
-- Multiple model training with cross-validation
-- GridSearchCV and RandomizedSearchCV tuning
-- Evaluation metrics, curves, and comparison tables
-- Saved best model and selected text vectorizer
-- Streamlit web app for live URL prediction
+The pipeline automatically:
 
-## Project Structure
+* Detects the URL and label columns
+* Cleans and preprocesses the dataset
+* Normalizes labels into binary classes
+* Extracts handcrafted URL features
+* Builds CountVectorizer and TF-IDF representations
+* Handles class imbalance using SMOTE (when required)
+* Trains and compares multiple machine learning models
+* Performs hyperparameter tuning
+* Evaluates model performance
+* Saves the best trained model
+* Deploys the classifier using Streamlit
 
-```
+---
+
+# ✨ Features
+
+* ✅ Automatic dataset schema detection
+* ✅ Dataset profiling and preprocessing
+* ✅ URL feature engineering
+* ✅ Character and word n-gram vectorization
+* ✅ CountVectorizer & TF-IDF comparison
+* ✅ Class imbalance handling with SMOTE
+* ✅ Multiple Machine Learning classifiers
+* ✅ Cross-validation
+* ✅ GridSearchCV & RandomizedSearchCV
+* ✅ ROC, Precision-Recall and Confusion Matrix visualization
+* ✅ Model persistence (.pkl)
+* ✅ Interactive Streamlit application
+
+---
+
+# 📂 Project Structure
+
+```text
 Malicious-URL-Classification/
 ├── README.md
 ├── app.py
@@ -40,121 +61,200 @@ Malicious-URL-Classification/
 │   │   ├── confusion_best_model.png
 │   │   ├── pr_best_model.png
 │   │   └── roc_best_model.png
-│   ├── metrics/
-│   │   ├── model_comparison.csv
-│   │   └── vectorizer_comparison.csv
-│   ├── reports/
-│   │   ├── best_model_summary.json
-│   │   └── sentinel.txt
 │   └── screenshots/
 │       ├── home.png
 │       ├── malicious_warning.png
 │       └── prediction.png
 ├── requirements.txt
 └── src/
-    ├── __init__.py
-    ├── __pycache__/
-    │   ├── __init__.cpython-314.pyc
-    │   ├── evaluate.cpython-314.pyc
-    │   ├── feature_engineering.cpython-314.pyc
-    │   ├── predict.cpython-314.pyc
-    │   ├── preprocessing.cpython-314.pyc
-    │   ├── train.cpython-314.pyc
-    │   └── utils.cpython-314.pyc
-    ├── evaluate.py
-    ├── feature_engineering.py
-    ├── predict.py
-    ├── preprocessing.py
-    ├── train.py
-    └── utils.py
-
 ```
 
-## Installation
+---
 
-1. Create and activate a virtual environment.
-2. Install dependencies:
+# ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/YourUsername/Malicious_URL_Classification.git
+cd Malicious_URL_Classification
+```
+
+Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate it
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Dataset
+---
 
-Place the CSV file at:
+# 📊 Dataset
+
+Place the dataset inside
 
 ```text
-Malicious_URL_Classification/data/dataset.csv
+data/dataset.csv
 ```
 
-The included notebook and training script will automatically detect the URL and label columns when the schema matches the expected two-column structure.
+The pipeline automatically detects the URL and label columns and prepares the dataset for training.
 
-## Training
+---
 
-Run the training pipeline from the project root:
+# 🚀 Training
+
+Run
 
 ```bash
 python -m src.train
 ```
 
-This will:
+The training pipeline automatically performs
 
-- analyze the dataset
-- clean and normalize it
-- compare vectorizer families
-- train and tune multiple classifiers
-- evaluate all models
-- save the best model artifacts
-- write metrics and figures to `outputs/`
+* Dataset analysis
+* Data cleaning
+* Feature engineering
+* Text vectorization
+* Model comparison
+* Hyperparameter tuning
+* Performance evaluation
+* Artifact generation
 
-## Evaluation
+All generated files are saved inside the **outputs/** and **models/** folders.
 
-Generated outputs are stored in:
+---
 
-- `outputs/metrics/`
-- `outputs/reports/`
-- `outputs/figures/`
+# 🌐 Streamlit Web Application
 
-Key artifacts include:
-
-- model comparison table
-- vectorizer comparison table
-- confusion matrices
-- ROC curves
-- precision-recall curves
-- learning curves
-- best model summary
-
-## Streamlit App
-
-Launch the web app with:
+Launch the application
 
 ```bash
 streamlit run app.py
 ```
 
-The interface allows you to paste a URL, submit a prediction, inspect the predicted class, view the probability score, and review extracted URL features.
+The application allows users to
 
-## Notebook
+* Enter any URL
+* Predict whether it is Benign or Malicious
+* Display prediction confidence
+* Inspect extracted URL features
 
-Open `notebooks/malicious_url_classification.ipynb` for the full end-to-end workflow with markdown explanations and executable cells.
+---
 
-## Example Screenshots
+# 📈 Model Performance
 
-Add screenshots here after running the Streamlit app:
+## Confusion Matrix
 
-- `outputs/screenshots/home.png`
-- `outputs/screenshots/prediction.png`
-- `outputs/screenshots/malicious_warning.png`
+The confusion matrix illustrates how accurately the best-performing classifier distinguishes between benign and malicious URLs.
 
-## Requirements
+<p align="center">
+<img src="outputs/figures/confusion_best_model.png" width="700">
+</p>
 
-See `requirements.txt` for the full dependency list.
+---
 
-## Future Improvements
+## ROC Curve
 
-- Add calibration plots for probability reliability
-- Expand feature extraction with domain reputation signals
-- Add model explainability with SHAP or permutation importance
-- Support incremental retraining on updated datasets
-- Expose a batch prediction endpoint
+The ROC Curve demonstrates the classifier's ability to separate malicious URLs from legitimate ones across different decision thresholds.
+
+<p align="center">
+<img src="outputs/figures/roc_best_model.png" width="700">
+</p>
+
+---
+
+## Precision-Recall Curve
+
+The Precision-Recall Curve highlights the model's effectiveness on the malicious class, which is especially important for cybersecurity applications involving imbalanced datasets.
+
+<p align="center">
+<img src="outputs/figures/pr_best_model.png" width="700">
+</p>
+
+---
+
+# 💻 Streamlit Application
+
+## Home Interface
+
+The application's homepage allows users to enter any URL for analysis.
+
+<p align="center">
+<img src="outputs/screenshots/home.png" width="900">
+</p>
+
+---
+
+## URL Prediction
+
+Example of a successful prediction displaying the predicted class along with the confidence score.
+
+<p align="center">
+<img src="outputs/screenshots/prediction.png" width="900">
+</p>
+
+---
+
+## Malicious URL Detection
+
+Example showing the warning displayed when the model identifies a malicious URL.
+
+<p align="center">
+<img src="outputs/screenshots/malicious_warning.png" width="900">
+</p>
+
+---
+
+# 📁 Generated Outputs
+
+```
+outputs/
+├── figures/
+├── metrics/
+├── reports/
+└── screenshots/
+```
+
+The project automatically generates:
+
+* Model comparison tables
+* Vectorizer comparison tables
+* ROC Curve
+* Precision-Recall Curve
+* Confusion Matrix
+* Classification reports
+* Best model summary
+* Streamlit screenshots
+
+---
+
+# 📦 Saved Models
+
+```
+models/
+├── best_model.pkl
+├── selected_vectorizer.pkl
+└── tfidf_vectorizer.pkl
+```
+
+These artifacts are used directly by the Streamlit application for inference.
+
