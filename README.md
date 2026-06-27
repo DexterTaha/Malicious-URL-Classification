@@ -22,30 +22,52 @@ The pipeline loads a CSV dataset, detects the URL and label columns automaticall
 
 ## Project Structure
 
-```text
-Malicious_URL_Classification/
+```
+Malicious-URL-Classification/
+├── README.md
+├── app.py
+├── build_artifacts.py
 ├── data/
 │   └── dataset.csv
-├── notebooks/
-│   └── malicious_url_classification.ipynb
-├── src/
-│   ├── __init__.py
-│   ├── feature_engineering.py
-│   ├── preprocessing.py
-│   ├── train.py
-│   ├── evaluate.py
-│   ├── predict.py
-│   └── utils.py
 ├── models/
 │   ├── best_model.pkl
+│   ├── selected_vectorizer.pkl
 │   └── tfidf_vectorizer.pkl
+├── notebooks/
+│   └── malicious_url_classification.ipynb
 ├── outputs/
 │   ├── figures/
+│   │   ├── confusion_best_model.png
+│   │   ├── pr_best_model.png
+│   │   └── roc_best_model.png
+│   ├── metrics/
+│   │   ├── model_comparison.csv
+│   │   └── vectorizer_comparison.csv
 │   ├── reports/
-│   └── metrics/
-├── app.py
+│   │   ├── best_model_summary.json
+│   │   └── sentinel.txt
+│   └── screenshots/
+│       ├── home.png
+│       ├── malicious_warning.png
+│       └── prediction.png
 ├── requirements.txt
-└── README.md
+└── src/
+    ├── __init__.py
+    ├── __pycache__/
+    │   ├── __init__.cpython-314.pyc
+    │   ├── evaluate.cpython-314.pyc
+    │   ├── feature_engineering.cpython-314.pyc
+    │   ├── predict.cpython-314.pyc
+    │   ├── preprocessing.cpython-314.pyc
+    │   ├── train.cpython-314.pyc
+    │   └── utils.cpython-314.pyc
+    ├── evaluate.py
+    ├── feature_engineering.py
+    ├── predict.py
+    ├── preprocessing.py
+    ├── train.py
+    └── utils.py
+
 ```
 
 ## Installation
