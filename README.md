@@ -110,14 +110,62 @@ pip install -r requirements.txt
 
 # 📊 Dataset
 
-Place the dataset inside
+Place the dataset in the following directory before running the project:
 
 ```text
-data/dataset.csv
+data/
+└── dataset.csv
 ```
 
-The pipeline automatically detects the URL and label columns and prepares the dataset for training.
+The preprocessing pipeline automatically detects the **URL** and **label** columns, cleans the data, extracts features, and prepares the dataset for machine learning.
 
+---
+
+## 📈 Dataset Statistics
+
+| Metric | Value |
+|:-------|------:|
+| **Total URLs** | **411,177** |
+| **Benign URLs** | **344,799 (83.86%)** |
+| **Malicious URLs** | **66,378 (16.14%)** |
+| **Classes** | 2 (Benign / Malicious) |
+
+---
+
+## 📝 Dataset Description
+
+The dataset contains **411,177** URLs collected for binary classification of web addresses into **Benign** and **Malicious** categories.
+
+As shown in the statistics above, the dataset is **highly imbalanced**, with benign URLs representing approximately **84%** of all samples and malicious URLs accounting for only **16%**. Such imbalance can bias machine learning models toward predicting the majority class.
+
+To address this issue, the project applies **SMOTE (Synthetic Minority Over-sampling Technique)** exclusively to the **training dataset**. SMOTE generates synthetic malicious samples to balance the class distribution, helping the models learn more representative decision boundaries and improving their ability to detect malicious URLs while reducing bias toward benign predictions.
+
+> **Note:** SMOTE is applied **only to the training set**. The validation and test sets remain unchanged to ensure a fair and realistic evaluation of model performance.
+
+---
+
+## 📊 Class Distribution
+
+| Class | Samples | Percentage |
+|:------|---------:|-----------:|
+| 🟢 Benign | 344,799 | 83.86% |
+| 🔴 Malicious | 66,378 | 16.14% |
+| **Total** | **411,177** | **100%** |
+
+---
+
+## 🎯 Why SMOTE?
+
+Without balancing the dataset, machine learning models may achieve high overall accuracy while performing poorly at detecting malicious URLs.
+
+Applying **SMOTE** provides several advantages:
+
+- Improves minority (malicious) class recognition.
+- Reduces prediction bias toward benign URLs.
+- Increases Recall and F1-Score for malicious URL detection.
+- Produces a more balanced training dataset, leading to better generalization.
+
+This preprocessing step contributes to a more robust and reliable malicious URL classification system.
 ---
 
 # 🚀 Training
